@@ -11,6 +11,7 @@ intents = discord.Intents.default()
 intents.members = True
 client = commands.Bot(command_prefix="r!",intents = intents,help_command=None)
 
+#Config
 @client.command()
 @commands.is_owner()
 async def load(ctx,extension):
