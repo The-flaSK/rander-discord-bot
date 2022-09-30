@@ -1,10 +1,10 @@
-from asyncio import subprocess
 import discord
 import os
 from discord.ext.commands import CommandNotFound
 from discord.ext import commands
-from discord.ext import tasks
-from requests import get
+from dotenv import load_dotenv
+
+load_dotenv()
 
 #Setup
 intents = discord.Intents.default()
@@ -47,7 +47,6 @@ async def on_ready():
                                 description=f"Our Website: {web}")
     await client.change_presence(status=discord.Status.online,
                                  activity=activity)
-    send_quote.start()
 
 @client.event
 async def on_command_error(ctx, error):
@@ -69,4 +68,4 @@ async def on_command_error(ctx, error):
         await ctx.send(embed=embed)
     raise error
 
-client.run('ODk4NDgzNzU1MjMxMTEzMjI4.YWk4NA.vu1PTnBh6mYYXsuQtP1lkbwxxFI')
+client.run(os.getenv("TOCKEN"))
